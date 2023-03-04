@@ -25,4 +25,10 @@ public class MediaFile {
 
     @Column
     private String path;
+
+    @Column
+    private String mimeType;
+
+    @Column
+    private Long fileSize;
 }
