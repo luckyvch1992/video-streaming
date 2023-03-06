@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface StorageService {
 
+    void upload(MediaFile mediaFile);
+
     List<MediaFile> findAll();
 }

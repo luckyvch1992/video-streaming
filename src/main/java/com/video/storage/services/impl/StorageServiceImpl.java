@@ -10,6 +10,11 @@ import java.util.List;
 public class StorageServiceImpl implements StorageService {
 
     @Override
+    public void upload(MediaFile mediaFile) {
+
+    }
+
+    @Override
     public List<MediaFile> findAll() {
         return null;
     }
