@@ -21,7 +21,7 @@ public class MediaFile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
     @Column
     private String path;
