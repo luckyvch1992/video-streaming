@@ -9,7 +9,7 @@ import static java.lang.String.format;
 
 public class FileUtils {
 
-    public static final String FILE_NAME_FORMAT = "%s.%s";
+    public static final String FILE_NAME_FORMAT = "%s%s";
     public static final String FILE_PATH_FORMAT = "/%s/%s";
 
     public static String generateFilePath(String mimeType) {

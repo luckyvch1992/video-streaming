@@ -4,6 +4,7 @@ import com.video.storage.entity.MediaFile;
 import com.video.storage.repository.StorageRepository;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
+import io.minio.RemoveObjectArgs;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class StorageService {
     }
 
     private String uploadAndSave(FilePart filePart, InputStream inputStream) {
-        String mimeType = requireNonNull(filePart.headers().getContentType()).getType();
+        String mimeType = requireNonNull(filePart.headers().getContentType()).toString();
         var filePath = generateFilePath(mimeType);
         try {
             minioClient.putObject(
