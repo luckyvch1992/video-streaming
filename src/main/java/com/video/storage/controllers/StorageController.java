@@ -20,6 +20,7 @@ import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("storage")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class StorageController {
 
@@ -31,7 +32,6 @@ public class StorageController {
     }
 
     @GetMapping(value = "findAll")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<MediaFileDTO> findAll() {
         var mediaFiles = storageService.findAll();
         return mediaFiles.stream()
