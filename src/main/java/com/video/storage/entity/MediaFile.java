@@ -28,6 +28,9 @@ public class MediaFile {
     private String path;
 
     @Column
+    private String fileName;
+
+    @Column
     private String mimeType;
 
     @Column

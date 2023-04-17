@@ -4,7 +4,6 @@ import com.video.storage.entity.MediaFile;
 import com.video.storage.repository.StorageRepository;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
-import io.minio.RemoveObjectArgs;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,13 @@ import reactor.core.publisher.Mono;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 import static com.video.storage.utils.FileUtils.generateFilePath;
 import static com.video.storage.utils.MediaFileUtils.buildMediaFile;
 import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
+import static java.util.stream.Collectors.toList;
 
 @Slf4j
 @Service
@@ -43,7 +44,8 @@ public class StorageService {
     }
 
     public List<MediaFile> findAll() {
-        return null;
+        return StreamSupport.stream(storageRepository.findAll().spliterator(), false)
+                .collect(toList());
     }
 
     private String uploadAndSave(FilePart filePart, InputStream inputStream) {
